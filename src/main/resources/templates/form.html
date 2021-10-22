@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Messagerie</title>
+    <link rel="stylesheet" href="/webjars/fomantic-ui/dist/semantic.min.css" />
+</head>
+<body>
+<div class="ui container">
+<form class="ui form" action="">
+  <h4 class="ui dividing header">CONTACTER NOUS</h4>
+  <div class="field">
+    <label>Nom</label>
+    <div class="two fields">
+      <div class="field">
+        <input type="text" name="" placeholder="Prénom">
+      </div>
+      <div class="field">
+        <input type="text" name="" placeholder="Nom">
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label>Adresse mail</label>
+    <div class="fields">
+      <div class="twelve wide field">
+        <input type="email" name="" placeholder="Entrez votre adresse mail...">
+      </div>
+      <div class="four wide field">
+         <input type="tel" maxlength="10" minlength="10" name="" placeholder="Numéro de téléphone">
+      </div>
+    </div>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <label>Quel refuge souhaitez-vous contacter ?</label>
+      <select class="ui fluid dropdown">
+      {{#refuges}}
+	    <option value="">{{nom}}</option>
+	    {{/refuges}}
+      </select>
+    </div>
+  </div>
+  
+  	<div class="field">
+    	<label>Votre message</label>
+    	<textarea></textarea>
+    </div>
+  
+  <div class="ui primary button" tabindex="0" onclick="location.href='mailto:';" type="submit">Envoyer votre message</div>
+  </div>
+
+  
+
+</form>
+</div>
+<script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+<script src="/webjars/fomantic-ui/dist/semantic.min.js"></script>
+<script>$(".checkbox").checkbox()</script>
+
+</body>
+</html>
