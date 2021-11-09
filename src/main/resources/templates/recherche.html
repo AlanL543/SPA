@@ -24,7 +24,8 @@
     					<v-col cols="12" md="4">
         					<v-select v-model="search.race" :items="races" item-text="libelle" label="Race" required></v-select>
     					</v-col>
-    					<v-btn :disabled="!valid" color="success" class="mr-4" @click="addOrUpdateUser()">Confirmer</v-btn>
+    					</v-row>
+    					<v-btn :disabled="!valid" color="success" class="mr-4" @click="reponseRecherche()">Confirmer</v-btn>
     			</v-form>
     		</v-container>
 		</v-card-text>

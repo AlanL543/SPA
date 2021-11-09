@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,6 +21,7 @@ import edu.supavenir.spanimals.repositories.AnimalRepository;
 import edu.supavenir.spanimals.repositories.EspeceRepository;
 import edu.supavenir.spanimals.repositories.RaceRepository;
 import io.github.jeemv.springboot.vuejs.VueJS;
+import io.github.jeemv.springboot.vuejs.utilities.Http;
 
 @Controller
 public class CaracteristiqueController {
@@ -52,18 +55,19 @@ public class CaracteristiqueController {
 	@GetMapping("/search")
 	public String indexRecherche(Model model) {
 		vue.addDataRaw("dialog", "{visible: true}");
-		vue.addData("search");
+		vue.addDataRaw("search", "{}");
 		List<Espece> especes = eRepo.findAll();
 		vue.addData("especes", especes);
 		vue.addData("valid", false);
 		List<Race> races = rRepo.findAll();
 		vue.addData("races", races);
+		vue.addMethod("reponseRecherche", Http.post("search/submit", "this.search", "console.log(response.data);"));
 		return "recherche";
 	}
 
-	@GetMapping("/tt")
-	public @ResponseBody String tt() {
-		return "tt";
+	@PostMapping("/search/submit")
+	public @ResponseBody String searchSubmit(@RequestBody Map<String, String> allParams) {
+		return allParams.toString();
 	}
 
 	@GetMapping("/Recherche/cookie")
